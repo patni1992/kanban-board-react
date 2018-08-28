@@ -1,0 +1,12 @@
+.board {
+  max-width: 690px;
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+.box {
+  width: 200px;
+  height: 100px;
+  background: pink;
+  margin: 15px;
+}
