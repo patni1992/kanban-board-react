@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Start from "./Start/Start";
+import Start from "./Start/start";
 import "./App.scss";
 
 export class App extends Component {
