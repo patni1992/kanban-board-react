@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import Board from "../Board/Board";
+import BoardList from "../BoardList/BoardList";
 import "./Start.scss";
 
 class Start extends Component {
   render() {
     return (
-      <div>
+      <div style={{ textAlign: "center" }}>
+        <h1>Boards</h1>
         <div className="container">
-          <h1>Boards</h1>
-          <Board />
+          <BoardList />
         </div>
       </div>
     );

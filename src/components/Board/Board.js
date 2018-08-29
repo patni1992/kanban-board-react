@@ -1,20 +1,20 @@
-import React, { Component } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import "./Board.scss";
-class Board extends Component {
-  render() {
-    return (
-      <div className="board">
-        <div className="box" />
-        <div className="box" />
-        <div className="box" />
-        <div className="box" />
-        <div className="box" />
-        <div className="box" />
-        <div className="box" />
-        <div className="box" />
-      </div>
-    );
-  }
-}
+
+const propTypes = {
+  title: PropTypes.string
+};
+
+const Board = ({ title, children }) => {
+  return (
+    <div className="board">
+      <h2>{title}</h2>
+      {children}
+    </div>
+  );
+};
+
+Board.propTypes = propTypes;
 
 export default Board;
