@@ -1,9 +1,16 @@
 import React, { Component } from "react";
+import onClickOutside from "react-onclickoutside";
 import "./AddBoard.scss";
 
 class AddBoard extends Component {
   state = {
     hideOverlay: false
+  };
+
+  handleClickOutside = () => {
+    if (this.state.hideOverlay) {
+      this.toggleOverlay();
+    }
   };
 
   toggleOverlay = () =>
@@ -28,4 +35,4 @@ class AddBoard extends Component {
   }
 }
 
-export default AddBoard;
+export default onClickOutside(AddBoard);
