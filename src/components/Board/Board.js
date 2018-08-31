@@ -1,14 +1,16 @@
 import React from "react";
+import classNames from "classnames";
 import PropTypes from "prop-types";
 import "./Board.scss";
 
 const propTypes = {
-  title: PropTypes.string
+  title: PropTypes.string,
+  color: PropTypes.string.isRequired
 };
 
-const Board = ({ title, children }) => {
+const Board = ({ title, color, children }) => {
   return (
-    <div className="board">
+    <div className={classNames("board", color)}>
       <h2>{title}</h2>
       {children}
     </div>

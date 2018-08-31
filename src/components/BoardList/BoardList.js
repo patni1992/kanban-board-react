@@ -5,19 +5,23 @@ import "./BoardList.scss";
 
 const testProjects = [
   {
-    title: "study"
+    title: "study",
+    color: "red"
   },
   {
     title: ""
   },
   {
-    title: "Dev stuff"
+    title: "Dev stuff",
+    color: "red"
   },
   {
-    title: "Youtube chanel"
+    title: "Youtube chanel",
+    color: "red"
   },
   {
-    title: "Other"
+    title: "Other",
+    color: "red"
   }
 ];
 
@@ -26,7 +30,7 @@ class BoardList extends Component {
     return (
       <div className="board-list">
         {testProjects.map(project => (
-          <Board title={project.title} />
+          <Board {...project} />
         ))}
         <Board>
           <AddBoard />
