@@ -4,10 +4,12 @@
   "description": "kanban-board-react",
   "main": "webpack.config.js",
   "dependencies": {
+    "classnames": "^2.2.6",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-onclickoutside": "^6.7.1"
+    "react-onclickoutside": "^6.7.1",
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
