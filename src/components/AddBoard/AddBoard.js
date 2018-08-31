@@ -21,14 +21,14 @@ class AddBoard extends Component {
   render() {
     return (
       <div className="add-board">
-        <input type="text" name="" id="" />
-        <button>Create</button>
+        <input type="text" name="" id="" className="add-board__input" />
+        <button className="add-board__submit">Create</button>
         <div
           onClick={this.toggleOverlay}
           style={{ display: this.state.hideOverlay ? "none" : "block" }}
           className="add-board__overlay"
         >
-          <h2 className="add-board__overlay__text">Click me</h2>
+          <h2 className="add-board__overlay__text">Create new board</h2>
         </div>
       </div>
     );
