@@ -8,7 +8,7 @@ class Start extends Component {
       <div style={{ textAlign: "center" }}>
         <h1>Boards</h1>
         <div className="container">
-          <BoardList />
+          <BoardList {...this.props} />
         </div>
       </div>
     );

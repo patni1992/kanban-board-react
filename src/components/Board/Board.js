@@ -1,22 +1,13 @@
-import React from "react";
-import classNames from "classnames";
-import PropTypes from "prop-types";
-import "./Board.scss";
+import React, { Component } from "react";
 
-const propTypes = {
-  title: PropTypes.string,
-  color: PropTypes.string.isRequired
-};
-
-const Board = ({ title, color, children }) => {
-  return (
-    <div className={classNames("board", color)}>
-      <h2>{title}</h2>
-      {children}
-    </div>
-  );
-};
-
-Board.propTypes = propTypes;
+class Board extends Component {
+  render() {
+    return (
+      <div style={{ backgroundColor: "blue" }}>
+        <h1>{this.props.title}</h1>
+      </div>
+    );
+  }
+}
 
 export default Board;

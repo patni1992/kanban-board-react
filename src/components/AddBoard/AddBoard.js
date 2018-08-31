@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import onClickOutside from "react-onclickoutside";
 import "./AddBoard.scss";
+import { withRouter } from "react-router-dom";
 
 class AddBoard extends Component {
   state = {
-    hideOverlay: false
+    hideOverlay: false,
+    title: ""
   };
 
   handleClickOutside = () => {
@@ -18,11 +20,31 @@ class AddBoard extends Component {
       hideOverlay: !prevState.hideOverlay
     }));
 
+  handleChange = event => this.setState({ title: event.target.value });
+
+  handleClick = () => {
+    const newBoard = this.props.addBoard(this.state.title);
+    this.props.history.push(`/board/${newBoard.id}`);
+  };
+
   render() {
     return (
       <div className="add-board">
-        <input type="text" name="" id="" className="add-board__input" />
-        <button className="add-board__submit">Create</button>
+        <input
+          type="text"
+          onChange={this.handleChange}
+          value={this.state.title}
+          name=""
+          id=""
+          className="add-board__input"
+        />
+        <button
+          onClick={this.handleClick}
+          disabled={this.state.title === ""}
+          className="add-board__submit"
+        >
+          Create
+        </button>
         <div
           onClick={this.toggleOverlay}
           style={{ display: this.state.hideOverlay ? "none" : "block" }}
@@ -35,4 +57,4 @@ class AddBoard extends Component {
   }
 }
 
-export default onClickOutside(AddBoard);
+export default withRouter(onClickOutside(AddBoard));

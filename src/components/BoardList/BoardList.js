@@ -1,40 +1,20 @@
 import React, { Component } from "react";
-import Board from "../Board/Board";
+import BoardBox from "../BoardBox/BoardBox";
 import AddBoard from "../AddBoard/AddBoard";
 import "./BoardList.scss";
 
-const testProjects = [
-  {
-    title: "study",
-    color: "red"
-  },
-  {
-    title: ""
-  },
-  {
-    title: "Dev stuff",
-    color: "red"
-  },
-  {
-    title: "Youtube chanel",
-    color: "red"
-  },
-  {
-    title: "Other",
-    color: "red"
-  }
-];
-
 class BoardList extends Component {
   render() {
+    const { boards, addBoard } = this.props;
+
     return (
       <div className="board-list">
-        {testProjects.map(project => (
-          <Board {...project} />
+        {boards.map(board => (
+          <BoardBox key={board.id} {...board} />
         ))}
-        <Board>
-          <AddBoard />
-        </Board>
+        <BoardBox color="red">
+          <AddBoard addBoard={addBoard} />
+        </BoardBox>
       </div>
     );
   }
