@@ -5,6 +5,11 @@ class Board extends Component {
     return (
       <div style={{ backgroundColor: "blue" }}>
         <h1>{this.props.title}</h1>
+        <ul>
+          {this.props.rows.map(row => (
+            <li>{row.title}</li>
+          ))}
+        </ul>
       </div>
     );
   }

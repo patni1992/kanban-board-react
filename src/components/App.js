@@ -6,32 +6,51 @@ import "./App.scss";
 
 export class App extends Component {
   state = {
+    rows: {
+      1: { title: "Todo" },
+      2: { title: "In Progress" },
+      3: { title: "Done" }
+    },
     boards: {
       1: {
         id: 1,
         title: "study",
-        color: "red"
+        color: "red",
+        rows: [1, 2, 3]
       },
       2: {
         id: 2,
-        title: ""
+        title: "",
+        rows: []
       },
       3: {
         id: 3,
         title: "Dev stuff",
-        color: "red"
+        color: "red",
+        rows: []
       },
       4: {
         id: 4,
-        title: "Youtube chanel",
-        color: "red"
+        title: "Youtube channel",
+        color: "red",
+        rows: []
       },
       5: {
         id: 5,
         title: "Other",
-        color: "red"
+        color: "red",
+        rows: []
       }
     }
+  };
+
+  getRows = boardId => {
+    const rows = [];
+    this.state.boards[boardId].rows.forEach(rowId => {
+      rows.push(this.state.rows[rowId]);
+    });
+
+    return rows;
   };
 
   addBoard = title => {
@@ -70,6 +89,7 @@ export class App extends Component {
                 <Board
                   {...props}
                   {...this.state.boards[props.match.params.boardId]}
+                  rows={this.getRows(props.match.params.boardId)}
                 />
               );
             }}
