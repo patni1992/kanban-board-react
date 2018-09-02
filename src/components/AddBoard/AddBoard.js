@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import onClickOutside from "react-onclickoutside";
-import "./AddBoard.scss";
 import { withRouter } from "react-router-dom";
+import ColorPicker from "../ColorPicker/ColorPicker";
+import "./AddBoard.scss";
 
 class AddBoard extends Component {
   state = {
     hideOverlay: false,
-    title: ""
+    title: "",
+    color: null
   };
 
   handleClickOutside = () => {
@@ -23,8 +25,15 @@ class AddBoard extends Component {
   handleChange = event => this.setState({ title: event.target.value });
 
   handleClick = () => {
-    const newBoard = this.props.addBoard(this.state.title);
+    const { color, title } = this.state;
+    const newBoard = this.props.addBoard({ color, title });
     this.props.history.push(`/board/${newBoard.id}`);
+  };
+
+  setColor = color => {
+    this.setState({
+      color
+    });
   };
 
   render() {
@@ -37,6 +46,19 @@ class AddBoard extends Component {
           name=""
           id=""
           className="add-board__input"
+        />
+        <ColorPicker
+          clickHandler={this.setColor}
+          colors={[
+            "rgb(0, 121, 191)",
+            "rgb(97, 189, 79)",
+            "rgb(255, 171, 74)",
+            "rgb(235, 90, 70)",
+            "rgb(242, 214, 0)",
+            "rgb(195, 119, 224)",
+            "rgb(255, 128, 206)",
+            "rgb(81, 232, 152)"
+          ]}
         />
         <button
           onClick={this.handleClick}

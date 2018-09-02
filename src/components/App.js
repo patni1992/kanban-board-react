@@ -53,10 +53,11 @@ export class App extends Component {
     return rows;
   };
 
-  addBoard = title => {
+  addBoard = board => {
     const newBoard = {
       id: new Date().getTime(),
-      title
+      rows: [],
+      ...board
     };
     const boards = {
       ...this.state.boards,
