@@ -41,25 +41,29 @@ class AddBoard extends Component {
       <div className="add-board">
         <input
           type="text"
+          placeholder="Add board title"
           onChange={this.handleChange}
           value={this.state.title}
           name=""
           id=""
           className="add-board__input"
         />
-        <ColorPicker
-          clickHandler={this.setColor}
-          colors={[
-            "rgb(0, 121, 191)",
-            "rgb(97, 189, 79)",
-            "rgb(255, 171, 74)",
-            "rgb(235, 90, 70)",
-            "rgb(242, 214, 0)",
-            "rgb(195, 119, 224)",
-            "rgb(255, 128, 206)",
-            "rgb(81, 232, 152)"
-          ]}
-        />
+        <div className="add-board__cp-container">
+          <ColorPicker
+            clickHandler={this.setColor}
+            colors={[
+              "rgb(0, 121, 191)",
+              "rgb(97, 189, 79)",
+              "rgb(255, 171, 74)",
+              "rgb(235, 90, 70)",
+              "rgb(242, 214, 0)",
+              "rgb(195, 119, 224)",
+              "rgb(255, 128, 206)",
+              "rgb(81, 232, 152)"
+            ]}
+          />
+        </div>
+
         <button
           onClick={this.handleClick}
           disabled={this.state.title === ""}
