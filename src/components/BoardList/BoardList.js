@@ -12,7 +12,7 @@ class BoardList extends Component {
         {boards.map(board => (
           <BoardBox link key={board.id} {...board} />
         ))}
-        <BoardBox color="red">
+        <BoardBox color="#ddd">
           <AddBoard addBoard={addBoard} />
         </BoardBox>
       </div>
