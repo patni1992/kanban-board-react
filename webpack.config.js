@@ -15,7 +15,8 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     filename: "[name]-bundle.js",
-    path: path.resolve(__dirname, "./dist")
+    path: path.resolve(__dirname, "./dist"),
+    publicPath: "/"
   },
   module: {
     rules: [
@@ -25,6 +26,9 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
       }
     ]
+  },
+  devServer: {
+    historyApiFallback: true
   },
   plugins: [htmlWebpackPlugin, miniCssExtractPlugin]
 };
