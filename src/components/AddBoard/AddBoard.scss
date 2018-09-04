@@ -1,5 +1,6 @@
 @import "../../sass/variables";
 .add-board {
+  background: $color-gray;
   position: relative;
   width: 100%;
   height: 100%;
@@ -35,6 +36,7 @@
   }
 
   &__submit {
+    cursor: pointer;
     display: block;
     width: 10rem;
     padding: 1rem;
@@ -46,6 +48,7 @@
     transition: all 0.7s;
     &:disabled,
     &[disabled] {
+      cursor: default;
       border: 1px solid #999999;
       background-color: #cccccc;
       color: #666666;

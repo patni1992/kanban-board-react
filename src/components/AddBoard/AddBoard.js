@@ -52,14 +52,14 @@ class AddBoard extends Component {
           <ColorPicker
             clickHandler={this.setColor}
             colors={[
-              "rgb(0, 121, 191)",
-              "rgb(97, 189, 79)",
-              "rgb(255, 171, 74)",
-              "rgb(235, 90, 70)",
-              "rgb(242, 214, 0)",
-              "rgb(195, 119, 224)",
-              "rgb(255, 128, 206)",
-              "rgb(81, 232, 152)"
+              "pink",
+              "blue",
+              "orange",
+              "green",
+              "light-green",
+              "purple",
+              "yellow",
+              "red"
             ]}
           />
         </div>
@@ -76,7 +76,7 @@ class AddBoard extends Component {
           style={{ display: this.state.hideOverlay ? "none" : "block" }}
           className="add-board__overlay"
         >
-          <h2 className="add-board__overlay__text">Create new board</h2>
+          <h2 className="add-board__overlay__text gray">Create new board</h2>
         </div>
       </div>
     );

@@ -22,8 +22,7 @@ class ColorPicker extends Component {
           <div
             data-color={color}
             onClick={this.clickHandler}
-            className="color-picker__color color-picker__color--selected"
-            style={{ backgroundColor: color }}
+            className={`color-picker__color color-picker__color--selected ${color}`}
           >
             {this.state.selected === color && (
               <i

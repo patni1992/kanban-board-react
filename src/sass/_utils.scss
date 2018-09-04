@@ -1,0 +1,35 @@
+.red {
+  @include applyColor($color-red);
+}
+
+.blue {
+  @include applyColor($color-blue);
+}
+
+.green {
+  @include applyColor($color-green);
+}
+
+.light-green {
+  @include applyColor($color-light-green);
+}
+
+.yellow {
+  @include applyColor($color-yellow);
+}
+
+.orange {
+  @include applyColor($color-orange);
+}
+
+.purple {
+  @include applyColor($color-purple);
+}
+
+.pink {
+  @include applyColor($color-pink);
+}
+
+.gray {
+  @include applyColor($color-gray);
+}

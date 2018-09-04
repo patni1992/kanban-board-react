@@ -20,13 +20,14 @@ export class App extends Component {
       },
       2: {
         id: 2,
-        title: "",
+        title: "test",
+        color: "yellow",
         rows: []
       },
       3: {
         id: 3,
         title: "Dev stuff",
-        color: "red",
+        color: "blue",
         rows: []
       },
       4: {

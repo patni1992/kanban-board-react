@@ -11,11 +11,8 @@ const propTypes = {
 
 function renderBoardBox(title, color, children) {
   return (
-    <div
-      style={{ backgroundColor: color }}
-      className={classNames("board-box", color)}
-    >
-      <h2>{title}</h2>
+    <div className={classNames("board-box", color)}>
+      <h2 className="board-box__text">{title}</h2>
       {children}
     </div>
   );
