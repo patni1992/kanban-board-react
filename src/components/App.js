@@ -1,16 +1,57 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Board from "../components/Board/Board";
+import Header from "../components/Header/Header";
 import Start from "./Start/start";
 import "./App.scss";
 
 export class App extends Component {
   state = {
     rows: {
-      1: { title: "Todo" },
-      2: { title: "In Progress" },
-      3: { title: "Done" }
+      1: {
+        title: "Todo",
+        cards: [
+          {
+            title:
+              "Integer rutrum magna eu tempor fringilla. Donec ultricies a quam at consectetur. Fusce tempus diam lectus, in posuere elit tincidunt vel. Pellentesque convallis rutrum elementum. In laoreet nibh in aliquet porttitor. Duis gravida elit leo, eu blandit turpis dapibus eu. Suspendisse sit amet odio quam. Donec sit amet mi et ligula consequat ornare eget at velit. Quisque facilisis eleifend euismod. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur et urna nec nibh ultrices gravida vitae vel sapien. Vestibulum ultricies vel ante et molestie.",
+            color: "red"
+          },
+          { title: "sleep", color: "red" }
+        ]
+      },
+      2: {
+        title: "In Progress"
+      },
+      3: {
+        title: "Done",
+        cards: [
+          { title: "play dota", color: "red" },
+          { title: "sleep", color: "red" }
+        ]
+      },
+      4: {
+        title: "Todo",
+        cards: [
+          {
+            title:
+              "Integer rutrum magna eu tempor fringilla. Donec ultricies a quam at consectetur. Fusce tempus diam lectus, in posuere elit tincidunt vel. Pellentesque convallis rutrum elementum. In laoreet nibh in aliquet porttitor. Duis gravida elit leo, eu blandit turpis dapibus eu. Suspendisse sit amet odio quam. Donec sit amet mi et ligula consequat ornare eget at velit. Quisque facilisis eleifend euismod. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur et urna nec nibh ultrices gravida vitae vel sapien. Vestibulum ultricies vel ante et molestie.",
+            color: "green"
+          },
+          { title: "sleep", color: "orange" }
+        ]
+      },
+      5: {
+        title: "In Progress"
+      },
+      6: {
+        title: "Done",
+        cards: [
+          { title: "buy books", color: "red" },
+          { title: "sleep", color: "blue" }
+        ]
+      }
     },
+
     boards: {
       1: {
         id: 1,
@@ -21,8 +62,8 @@ export class App extends Component {
       2: {
         id: 2,
         title: "test",
-        color: "yellow",
-        rows: []
+        color: "orange",
+        rows: [4, 5, 6]
       },
       3: {
         id: 3,
@@ -33,7 +74,7 @@ export class App extends Component {
       4: {
         id: 4,
         title: "Youtube channel",
-        color: "red",
+        color: "green",
         rows: []
       },
       5: {
@@ -69,10 +110,26 @@ export class App extends Component {
     });
     return newBoard;
   };
+
   render() {
     return (
       <Router>
         <div>
+          <Route
+            path="/:board?/:boardId?"
+            render={props => {
+              console.log(props.match.params.boardId);
+              return (
+                <Header
+                  color={
+                    props.match.params.boardId
+                      ? this.state.boards[props.match.params.boardId].color
+                      : "black"
+                  }
+                />
+              );
+            }}
+          />
           <Route
             exact
             path="/"
@@ -87,11 +144,12 @@ export class App extends Component {
           <Route
             path="/board/:boardId"
             render={props => {
+              const rows = this.getRows(props.match.params.boardId);
               return (
                 <Board
                   {...props}
                   {...this.state.boards[props.match.params.boardId]}
-                  rows={this.getRows(props.match.params.boardId)}
+                  rows={rows}
                 />
               );
             }}
