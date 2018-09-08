@@ -24,7 +24,8 @@ class ColorPicker extends Component {
             onClick={this.clickHandler}
             className={`color-picker__color color-picker__color--selected ${color}`}
           >
-            {this.state.selected === color && (
+            {(this.state.selected === color ||
+              (this.props.default === color && !this.state.selected)) && (
               <i
                 className="fa fa-check color-picker__checker"
                 aria-hidden="true"

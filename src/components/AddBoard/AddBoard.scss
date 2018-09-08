@@ -1,6 +1,8 @@
 @import "../../sass/variables";
+@import "../../sass/mixins";
 .add-board {
   background: $color-gray;
+  transition: all 0.2;
   position: relative;
   width: 100%;
   height: 100%;
@@ -13,11 +15,12 @@
   }
 
   &__overlay {
+    @include applyColor($color-gray);
     text-align: center;
     position: absolute;
+    color: black;
     top: 0;
     left: 0;
-    background-color: #ddd;
     width: 100%;
     height: 100%;
     cursor: pointer;

@@ -25,7 +25,8 @@ class AddBoard extends Component {
   handleChange = event => this.setState({ title: event.target.value });
 
   handleClick = () => {
-    const { color, title } = this.state;
+    let { color, title } = this.state;
+    color = color ? color : "blue";
     const newBoard = this.props.addBoard({ color, title });
     this.props.history.push(`/board/${newBoard.id}`);
   };
@@ -51,16 +52,8 @@ class AddBoard extends Component {
         <div className="add-board__cp-container">
           <ColorPicker
             clickHandler={this.setColor}
-            colors={[
-              "pink",
-              "blue",
-              "orange",
-              "green",
-              "light-green",
-              "purple",
-              "yellow",
-              "red"
-            ]}
+            default="blue"
+            colors={["blue", "orange", "green", "red"]}
           />
         </div>
 
@@ -76,7 +69,7 @@ class AddBoard extends Component {
           style={{ display: this.state.hideOverlay ? "none" : "block" }}
           className="add-board__overlay"
         >
-          <h2 className="add-board__overlay__text gray">Create new board</h2>
+          <h2 className="add-board__overlay__text">Create new board</h2>
         </div>
       </div>
     );

@@ -1,35 +1,75 @@
 .red {
+  background-color: $color-red;
+}
+
+.darken-red {
+  background-color: darken($color-red, 20%);
+}
+
+.lighten-red {
+  background-color: lighten($color-red, 10%);
+}
+
+.red-hover {
   @include applyColor($color-red);
 }
 
 .blue {
+  background-color: $color-blue;
+}
+
+.darken-blue {
+  background-color: darken($color-blue, 20%);
+}
+
+.lighten-blue {
+  background-color: lighten($color-blue, 10%);
+}
+
+.blue-hover {
   @include applyColor($color-blue);
 }
 
 .green {
+  background-color: $color-green;
+}
+
+.darken-green {
+  background-color: darken($color-green, 20%);
+}
+
+.lighten-green {
+  background-color: lighten($color-green, 10%);
+}
+
+.green-hover {
   @include applyColor($color-green);
 }
 
-.light-green {
-  @include applyColor($color-light-green);
-}
-
-.yellow {
-  @include applyColor($color-yellow);
-}
-
 .orange {
+  background-color: $color-orange;
+}
+
+.darken-orange {
+  background-color: darken($color-orange, 20%);
+}
+
+.lighten-orange {
+  background-color: lighten($color-orange, 10%);
+}
+
+.orange-hover {
   @include applyColor($color-orange);
 }
 
-.purple {
-  @include applyColor($color-purple);
-}
-
-.pink {
-  @include applyColor($color-pink);
-}
-
 .gray {
+  background-color: $color-gray;
+}
+
+.gray-hover {
   @include applyColor($color-gray);
+}
+
+.darken-black {
+  background-color: $color-black;
 }
