@@ -48,6 +48,18 @@
   background: none;
   border: none;
   color: inherit;
+  margin-left: 1rem;
+}
+
+.board__add-list-form {
+  flex: 0 0 27rem;
+  display: block;
+  margin-left: 1rem;
+
+  & input {
+    padding: 1rem;
+    width: 100%;
+  }
 }
 
 .add-card-btn::after {

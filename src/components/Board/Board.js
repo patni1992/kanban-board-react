@@ -1,13 +1,36 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import ClickOutside from "../ClickOutside/ClickOutside";
+import { addNewList } from "../../actions/lists";
 import List from "../List/List";
 import "./Board.scss";
 
 class Board extends Component {
+  state = {
+    inputList: false
+  };
+
+  toggleInputList = () => {
+    this.setState(prevState => ({
+      inputList: !prevState.inputList,
+      newList: ""
+    }));
+  };
+
+  onSubmitHandler = e => {
+    e.preventDefault();
+    this.props.addNewList({
+      title: this.state.newList,
+      boardId: this.props.id
+    });
+  };
+
+  onChangeHandler = e => {
+    this.setState({ newList: e.target.value });
+  };
+
   render() {
-    const {
-      board: { color, title }
-    } = this.props;
+    const { color, title } = this.props;
 
     return (
       <div>
@@ -18,9 +41,27 @@ class Board extends Component {
           {this.props.lists.map(list => (
             <List color={color} {...list} />
           ))}
-          <button class={`board_add-list-btn  darken-${color}`}>
-            Add a list
-          </button>
+          {this.state.inputList ? (
+            <ClickOutside handleClickOutside={this.toggleInputList}>
+              <form
+                className="board__add-list-form "
+                onSubmit={this.onSubmitHandler}
+              >
+                <input
+                  autoFocus
+                  value={this.state.newList}
+                  onChange={this.onChangeHandler}
+                />
+              </form>
+            </ClickOutside>
+          ) : (
+            <button
+              class={`board_add-list-btn  darken-${color}`}
+              onClick={this.toggleInputList}
+            >
+              Add a list
+            </button>
+          )}
         </section>
       </div>
     );
@@ -32,9 +73,12 @@ const mapStateToProps = (state, ownProps) => {
   const lists = board.lists.map(listId => state.lists[listId]);
 
   return {
-    board,
+    ...board,
     lists
   };
 };
 
-export default connect(mapStateToProps)(Board);
+export default connect(
+  mapStateToProps,
+  { addNewList }
+)(Board);
