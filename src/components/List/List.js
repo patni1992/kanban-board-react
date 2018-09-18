@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { addNewCard } from "../../actions/cards";
 import Card from "../Card/Card";
 import ClickOutside from "../ClickOutside/ClickOutside";
 import "./List.scss";
@@ -17,9 +18,13 @@ class List extends Component {
   };
 
   onKeyDown = e => {
-    if (e.key === "Enter" && !e.shiftKey) {
+    if (e.key === "Enter" && !e.shiftKey && this.state.newCardText) {
       e.preventDefault();
       console.log("submit");
+      this.props.addNewCard({
+        title: this.state.newCardText,
+        listId: this.props.id
+      });
     }
   };
 
@@ -66,4 +71,7 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(List);
+export default connect(
+  mapStateToProps,
+  { addNewCard }
+)(List);
