@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Card from "../Card/Card";
 import ClickOutside from "../ClickOutside/ClickOutside";
+import "./List.scss";
 
 class List extends Component {
   state = {
@@ -29,8 +31,8 @@ class List extends Component {
     const { color, title, cards } = this.props;
     return (
       <div class={`list darken-${color}`}>
-        <h3 class="list-title">{title}</h3>
-        <ul class="list-items">
+        <h3 class="list__title">{title}</h3>
+        <ul class="list__items">
           {cards && cards.map(card => <Card {...card} />)}
         </ul>
         {this.state.addCard ? (
@@ -45,7 +47,7 @@ class List extends Component {
             />
           </ClickOutside>
         ) : (
-          <span onClick={this.toggleAddCard} class="add-card-btn btn">
+          <span onClick={this.toggleAddCard} class="list__add-card-btn">
             + Add a card
           </span>
         )}
@@ -54,4 +56,14 @@ class List extends Component {
   }
 }
 
-export default List;
+const mapStateToProps = (state, ownProps) => {
+  const cards = state.lists[ownProps.id].cards.map(
+    cardId => state.cards[cardId]
+  );
+
+  return {
+    cards
+  };
+};
+
+export default connect(mapStateToProps)(List);

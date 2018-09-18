@@ -1,0 +1,55 @@
+.board__info-bar {
+  flex-basis: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.8rem 0;
+  padding: 0 1rem;
+  color: #f6f6f6;
+  margin: 0;
+}
+
+.board__title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: background-color 150ms;
+  padding: 2rem 0;
+}
+
+.board__lists-container::-webkit-scrollbar {
+  height: 2.4rem;
+}
+
+.board__lists-container::-webkit-scrollbar-thumb {
+  background-color: #66a3c7;
+  border: 0.8rem solid #0079bf;
+  border-top-width: 0;
+}
+
+.board__lists-container {
+  display: flex;
+  align-items: start;
+  padding: 0 0.8rem 0.8rem;
+  overflow-x: auto;
+  height: calc(100vh - 7.4rem);
+}
+
+.board_add-list-btn {
+  flex: 0 0 27rem;
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 400;
+  padding: 1rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: background-color 150ms;
+  text-align: left;
+  background: none;
+  border: none;
+  color: inherit;
+}
+
+.add-card-btn::after {
+  content: "...";
+}

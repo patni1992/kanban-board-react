@@ -27,8 +27,12 @@ class AddBoard extends Component {
   handleClick = () => {
     let { color, title } = this.state;
     color = color ? color : "blue";
-    const newBoard = this.props.addBoard({ color, title });
-    this.props.history.push(`/board/${newBoard.id}`);
+    this.props.addNewBoard({ color, title });
+    this.handleClickOutside();
+    this.setState({
+      title: "",
+      color: null
+    });
   };
 
   setColor = color => {
