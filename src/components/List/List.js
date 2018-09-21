@@ -36,55 +36,57 @@ class List extends Component {
   render() {
     const { color, title, cards, id } = this.props;
     return (
-      <Droppable droppableId={`${id}`}>
-        {(provided, { isDraggingOver }) => (
-          <div className="list__container" ref={provided.innerRef}>
-            <h3 class={`list__title darken-${color}`}>{title}</h3>
-            <div class={`list darken-${color}`}>
-              <div class="list__items">
-                {cards &&
-                  cards.map((card, index) => (
-                    <Draggable
-                      key={card.id}
-                      index={index}
-                      draggableId={card.id}
-                    >
-                      {(provided, { isDragging }) => (
-                        <div
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                          ref={provided.innerRef}
-                          style={{
-                            ...provided.draggableProps.style
-                          }}
-                        >
-                          <Card {...card} />
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
-                {provided.placeholder}
+      <div className="list__container">
+        <h3 class={`list__title darken-${color}`}>{title}</h3>
+        <Droppable droppableId={`${id}`}>
+          {(provided, { isDraggingOver }) => (
+            <div ref={provided.innerRef} style={{ height: "100%" }}>
+              <div class={`list darken-${color}`}>
+                <div class="list__items">
+                  {cards &&
+                    cards.map((card, index) => (
+                      <Draggable
+                        key={card.id}
+                        index={index}
+                        draggableId={card.id}
+                      >
+                        {(provided, { isDragging }) => (
+                          <div
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            ref={provided.innerRef}
+                            style={{
+                              ...provided.draggableProps.style
+                            }}
+                          >
+                            <Card {...card} />
+                          </div>
+                        )}
+                      </Draggable>
+                    ))}
+                  {provided.placeholder}
+                </div>
               </div>
+              {this.state.addCard ? (
+                <ClickOutside handleClickOutside={this.toggleAddCard}>
+                  <textarea
+                    onKeyDown={this.onKeyDown}
+                    placeholder="Add a new card"
+                    className="add-card"
+                    type="text"
+                    onChange={this.onChange}
+                    value={this.state.newCardText}
+                  />
+                </ClickOutside>
+              ) : (
+                <span onClick={this.toggleAddCard} class="list__add-card-btn">
+                  + Add a card
+                </span>
+              )}
             </div>
-            {this.state.addCard ? (
-              <ClickOutside handleClickOutside={this.toggleAddCard}>
-                <textarea
-                  onKeyDown={this.onKeyDown}
-                  placeholder="Add a new card"
-                  className="add-card"
-                  type="text"
-                  onChange={this.onChange}
-                  value={this.state.newCardText}
-                />
-              </ClickOutside>
-            ) : (
-              <span onClick={this.toggleAddCard} class="list__add-card-btn">
-                + Add a card
-              </span>
-            )}
-          </div>
-        )}
-      </Droppable>
+          )}
+        </Droppable>
+      </div>
     );
   }
 }
