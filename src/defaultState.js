@@ -32,20 +32,20 @@ const defaultState = {
     }
   },
   cards: {
-    1: { id: 1, title: "sleep", color: "red" },
-    2: { id: 2, title: "# read react book", color: "blue" },
-    3: { id: 3, title: "watch south park", color: "orange" }
+    "1": { id: "1", title: "sleep", color: "red" },
+    "2": { id: "2", title: "# read react book", color: "blue" },
+    "3": { id: "3", title: "watch south park", color: "orange" }
   },
   lists: {
     1: {
       id: 1,
       title: "Todo",
-      cards: [1, 2]
+      cards: ["1", "2"]
     },
-    2: {
+    "2": {
       id: 2,
       title: "In Progress",
-      cards: [3]
+      cards: ["3"]
     }
   }
 };

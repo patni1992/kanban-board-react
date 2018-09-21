@@ -30,9 +30,9 @@
 .board__lists-container {
   display: flex;
   align-items: start;
+  height: calc(100% - 11rem);
+  overflow-y: auto;
   padding: 0 0.8rem 0.8rem;
-  overflow-x: auto;
-  height: calc(100vh - 7.4rem);
 }
 
 .board_add-list-btn {

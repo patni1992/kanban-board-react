@@ -1,10 +1,11 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
+import { Draggable } from "react-beautiful-dnd";
 import "./Card.scss";
 const Card = props => (
-  <li className={` card lighten-${props.color}`}>
+  <div className={` card lighten-${props.color}`}>
     <ReactMarkdown source={props.title} />
-  </li>
+  </div>
 );
 
 export default Card;

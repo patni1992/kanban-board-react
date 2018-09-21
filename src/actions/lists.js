@@ -8,3 +8,10 @@ export function addNewList(payload) {
     payload
   };
 }
+
+export function moveCard(payload) {
+  return {
+    type: "MOVE_CARD",
+    payload
+  };
+}

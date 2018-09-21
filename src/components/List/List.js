@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addNewCard } from "../../actions/cards";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import Card from "../Card/Card";
 import ClickOutside from "../ClickOutside/ClickOutside";
 import "./List.scss";
@@ -33,30 +34,57 @@ class List extends Component {
   };
 
   render() {
-    const { color, title, cards } = this.props;
+    const { color, title, cards, id } = this.props;
     return (
-      <div class={`list darken-${color}`}>
-        <h3 class="list__title">{title}</h3>
-        <ul class="list__items">
-          {cards && cards.map(card => <Card {...card} />)}
-        </ul>
-        {this.state.addCard ? (
-          <ClickOutside handleClickOutside={this.toggleAddCard}>
-            <textarea
-              onKeyDown={this.onKeyDown}
-              placeholder="Add a new card"
-              className="add-card"
-              type="text"
-              onChange={this.onChange}
-              value={this.state.newCardText}
-            />
-          </ClickOutside>
-        ) : (
-          <span onClick={this.toggleAddCard} class="list__add-card-btn">
-            + Add a card
-          </span>
+      <Droppable droppableId={`${id}`}>
+        {(provided, { isDraggingOver }) => (
+          <div className="list__container" ref={provided.innerRef}>
+            <h3 class={`list__title darken-${color}`}>{title}</h3>
+            <div class={`list darken-${color}`}>
+              <div class="list__items">
+                {cards &&
+                  cards.map((card, index) => (
+                    <Draggable
+                      key={card.id}
+                      index={index}
+                      draggableId={card.id}
+                    >
+                      {(provided, { isDragging }) => (
+                        <div
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          ref={provided.innerRef}
+                          style={{
+                            ...provided.draggableProps.style
+                          }}
+                        >
+                          <Card {...card} />
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                {provided.placeholder}
+              </div>
+            </div>
+            {this.state.addCard ? (
+              <ClickOutside handleClickOutside={this.toggleAddCard}>
+                <textarea
+                  onKeyDown={this.onKeyDown}
+                  placeholder="Add a new card"
+                  className="add-card"
+                  type="text"
+                  onChange={this.onChange}
+                  value={this.state.newCardText}
+                />
+              </ClickOutside>
+            ) : (
+              <span onClick={this.toggleAddCard} class="list__add-card-btn">
+                + Add a card
+              </span>
+            )}
+          </div>
         )}
-      </div>
+      </Droppable>
     );
   }
 }

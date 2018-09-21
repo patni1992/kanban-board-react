@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Board from "../components/Board/Board";
 import Header from "../components/Header/Header";
@@ -9,11 +9,11 @@ export class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <Fragment>
           <Route path="/:board?/:boardId?" component={Header} />
           <Route exact path="/" component={Start} />
           <Route path="/board/:boardId" component={Board} />
-        </div>
+        </Fragment>
       </Router>
     );
   }

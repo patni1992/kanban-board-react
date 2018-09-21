@@ -17,6 +17,30 @@ const lists = (state = {}, action) => {
         }
       };
     }
+
+    case "MOVE_CARD": {
+      const { source, destination } = action.payload;
+      const sourceCards = state[source.id].cards.slice(0);
+      const cardId = sourceCards.splice(source.index, 1);
+
+      if (source.id === destination.id) {
+        sourceCards.splice(destination.index, 0, cardId);
+        return {
+          ...state,
+          [source.id]: { ...state[source.id], cards: sourceCards }
+        };
+      }
+
+      const destinationCards = state[destination.id].cards.slice(0);
+      destinationCards.splice(destination.index, 0, cardId);
+
+      return {
+        ...state,
+        [source.id]: { ...state[source.id], cards: sourceCards },
+        [destination.id]: { ...state[destination.id], cards: destinationCards }
+      };
+    }
+
     default:
       return state;
   }
