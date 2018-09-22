@@ -1,16 +1,22 @@
 .list {
   background-color: #e2e4e6;
   border-radius: 0.3rem;
-  width: 100%;
-  overflow-y: auto;
+  min-height: 1rem;
+  overflow: auto;
+  margin-bottom: 10px;
+  background-color: transparent;
 }
 
 .list__container {
+  margin-right: 1rem;
   display: inline-flex;
   flex: 0 0 27rem;
-  margin-right: 1rem;
-  flex-direction: column;
   height: 100%;
+
+  flex-direction: column;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .list:last-of-type {
@@ -26,13 +32,11 @@
 
 .list__items {
   width: 100%;
+  height: 100%;
   list-style: none;
-  display: inline-flex;
-  flex-direction: column;
-  align-content: start;
-  overflow-y: auto;
-  &::-webkit-scrollbar {
-    width: 0.8rem;
+  &:-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.4);
   }
 }
 
