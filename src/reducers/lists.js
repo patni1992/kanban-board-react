@@ -21,7 +21,7 @@ const lists = (state = {}, action) => {
     case "MOVE_CARD": {
       const { source, destination } = action.payload;
       const sourceCards = state[source.id].cards.slice(0);
-      const cardId = sourceCards.splice(source.index, 1);
+      const cardId = sourceCards.splice(source.index, 1)[0];
 
       if (source.id === destination.id) {
         sourceCards.splice(destination.index, 0, cardId);
