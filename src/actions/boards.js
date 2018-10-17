@@ -8,3 +8,11 @@ export function addNewBoard(payload) {
     payload
   };
 }
+
+export function moveList(payload) {
+ 
+  return {
+    type: "MOVE_LIST",
+    payload
+  }
+}

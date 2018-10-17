@@ -10,6 +10,18 @@ const boards = (state = {}, action) => {
         [boardId]: { ...state[boardId], lists: [...state[boardId].lists, id] }
       };
     }
+    case "MOVE_LIST": {
+      const { sourceIndex, destinationIndex, boardId } = action.payload;
+      const lists = [...state[boardId].lists];
+      const listId = lists.splice(sourceIndex, 1)[0];
+    
+      lists.splice(destinationIndex, 0, listId);
+     
+      return {
+        ...state,
+        [boardId]: { ...state[boardId], lists }
+      }
+    }
     default:
       return state;
   }

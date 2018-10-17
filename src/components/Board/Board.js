@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { connect } from "react-redux";
 import ClickOutside from "../ClickOutside/ClickOutside";
-import { addNewList, moveCard } from "../../actions/lists";
+import { addNewList, moveCard} from "../../actions/lists";
+import {moveList } from "../../actions/boards"
 import List from "../List/List";
 import "./Board.scss";
 
@@ -31,15 +32,26 @@ class Board extends Component {
   };
 
   handleDragEnd = result => {
-    const { source, destination } = result;
+    const { source, destination , type} = result;
+    
     if (!destination) {
       return;
     }
-
-    this.props.moveCard({
-      source: { id: source.droppableId, index: source.index },
-      destination: { id: destination.droppableId, index: destination.index }
-    });
+    
+    if(type === "COLUMN") {
+      this.props.moveList({
+        sourceIndex: source.index,
+        destinationIndex: destination.index,
+        boardId: this.props.id
+      });
+     
+    } else {
+      this.props.moveCard({
+        source: { id: source.droppableId, index: source.index },
+        destination: { id: destination.droppableId, index: destination.index }
+      });
+    }
+   
   };
 
 
@@ -109,5 +121,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  { addNewList, moveCard }
+  { addNewList, moveCard, moveList }
 )(Board);
