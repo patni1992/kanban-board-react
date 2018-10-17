@@ -34,53 +34,73 @@ class List extends Component {
   };
 
   render() {
-    const { color, title, cards, id } = this.props;
+    const { color, title, cards, id, index } = this.props;
     return (
-      <Droppable droppableId={`${id}`}>
-        {(provided, { isDraggingOver }) => (
-          <div className="list__container">
-            <h3 class={`list__title darken-${color}`}>{title}</h3>
-            <div ref={provided.innerRef} class={`list darken-${color}`}>
-              {cards &&
-                cards.map((card, index) => (
-                  <Draggable key={card.id} index={index} draggableId={card.id}>
-                    {(provided, { isDragging }) => (
-                      <div
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        ref={provided.innerRef}
-                        style={{
-                          ...provided.draggableProps.style
-                        }}
-                      >
-                        <Card {...card} />
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
+      <Draggable key={id + 1} index={index} draggableId={id + 1}>
+        {(prov, { isDragging }) => (
+         
+          <div className="list__container "{...prov.draggableProps}
+            ref={prov.innerRef}
+            style={{
+              ...prov.draggableProps.style
+            }}>
+            <h3  {...prov.dragHandleProps} class={`list__title darken-${color}`}>{title}</h3>
+            <Droppable droppableId={`${id}`}>
+              {(provided, { isDraggingOver }) => (
+                     
+                  <div ref={provided.innerRef} class={`list darken-${color}`}>
+                  
+                    {cards &&
+                      cards.map((card, index) => (
+                        <Draggable key={card.id} index={index} draggableId={card.id}>
+                          {(provided, { isDragging }) => (
+                            <div
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              ref={provided.innerRef}
+                              style={{
+                                ...provided.draggableProps.style
+                              }}
+                            >
+                              <Card {...card} />
+                            </div>
+                          )}
+                        </Draggable>
+                      ))}
 
-              {provided.placeholder}
-            </div>
+                    {provided.placeholder}
+                  </div>
 
+                  
+              )}
+            </Droppable>
+           
             {this.state.addCard ? (
-              <ClickOutside handleClickOutside={this.toggleAddCard}>
-                <textarea
-                  onKeyDown={this.onKeyDown}
-                  placeholder="Add a new card"
-                  className="add-card"
-                  type="text"
-                  onChange={this.onChange}
-                  value={this.state.newCardText}
-                />
-              </ClickOutside>
-            ) : (
-              <span onClick={this.toggleAddCard} class="list__add-card-btn">
-                + Add a card
-              </span>
-            )}
+                    <ClickOutside handleClickOutside={this.toggleAddCard}>
+                      <textarea
+                        onKeyDown={this.onKeyDown}
+                        placeholder="Add a new card"
+                        className="add-card"
+                        type="text"
+                        onChange={this.onChange}
+                        value={this.state.newCardText}
+                      />
+                    </ClickOutside>
+                  ) : (
+                      <span onClick={this.toggleAddCard} class="list__add-card-btn">
+                        + Add a card
+            </span>
+                    )}
           </div>
+         
+          
+
+
+
+
         )}
-      </Droppable>
+      </Draggable>
+
     );
   }
 }

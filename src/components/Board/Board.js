@@ -42,40 +42,56 @@ class Board extends Component {
     });
   };
 
+
   render() {
-    const { color, title } = this.props;
+    const { color, title, id } = this.props;
 
     return (
       <DragDropContext onDragEnd={this.handleDragEnd}>
-        <section class={`board__info-bar ${color}`}>
-          <h2 className="board__title">{title}</h2>
-        </section>
-        <section class={`board__lists-container ${color}`}>
-          {this.props.lists.map(list => (
-            <List color={color} {...list} />
-          ))}
-          {this.state.inputList ? (
-            <ClickOutside handleClickOutside={this.toggleInputList}>
-              <form
-                className="board__add-list-form "
-                onSubmit={this.onSubmitHandler}
-              >
-                <input
-                  autoFocus
-                  value={this.state.newList}
-                  onChange={this.onChangeHandler}
-                />
-              </form>
-            </ClickOutside>
-          ) : (
-            <button
-              class={`board_add-list-btn  darken-${color}`}
-              onClick={this.toggleInputList}
-            >
-              Add a list
+        <Droppable
+          droppableId={id}
+          type="COLUMN"
+          direction="horizontal"
+        >
+          {provided => (
+            <div  onMouseDown={this.handleMouseDown}
+            onWheel={this.handleWheel} class={`board__container ${color}`} ref={provided.innerRef}>
+              <section  class={`board__info-bar`}>
+                <h2 className="board__title">{title}</h2>
+              </section>
+              <section class={`board__lists-container  ${color}`}>
+                {this.props.lists.map((list, index) => (
+                  <List color={color} index={index} {...list} />
+                ))}
+                {this.state.inputList ? (
+                  <ClickOutside   handleClickOutside={this.toggleInputList}>
+                    <form
+                      className="board__add-list-form "
+                      onSubmit={this.onSubmitHandler}
+                    >
+                      <input
+                        autoFocus
+                        value={this.state.newList}
+                        onChange={this.onChangeHandler}
+                      />
+                    </form>
+                  </ClickOutside>
+                ) : (
+                    <button
+                      class={`board_add-list-btn  darken-${color}`}
+                      onClick={this.toggleInputList}
+                    >
+                      Add a list
             </button>
+                  )}
+                {provided.placeholder}
+              </section>
+
+            </div>
+
           )}
-        </section>
+        </Droppable>
+
       </DragDropContext>
     );
   }

@@ -1,3 +1,5 @@
+@import "../../sass/variables";
+
 .board__info-bar {
   flex-basis: 3rem;
   display: flex;
@@ -9,29 +11,27 @@
   margin: 0;
 }
 
+
+.board__container {
+  height: calc(100% - #{$header-and-board-title-height});
+  
+  
+}
+
 .board__title {
   font-size: 2.2rem;
   font-weight: 700;
   white-space: nowrap;
   transition: background-color 150ms;
-  padding: 2rem 0;
+  padding: 1.2rem 0;
 }
 
-.board__lists-container::-webkit-scrollbar {
-  height: 2.4rem;
-}
-
-.board__lists-container::-webkit-scrollbar-thumb {
-  background-color: #66a3c7;
-  border: 0.8rem solid #0079bf;
-  border-top-width: 0;
-}
 
 .board__lists-container {
   display: flex;
   align-items: start;
-  height: calc(100% - 11rem);
-  padding: 0 0.8rem 0.8rem;
+  height: 100%
+
 }
 
 .board_add-list-btn {

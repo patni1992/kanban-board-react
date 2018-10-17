@@ -1,33 +1,21 @@
 const defaultState = {
   boards: {
-    1: {
-      id: 1,
+    10: {
+      id: 10,
       title: "study",
       color: "red",
-      lists: [1, 2]
+      lists: [1337, 1338]
     },
-    2: {
-      id: 2,
+    11: {
+      id: 11,
       title: "test",
       color: "orange",
       lists: []
     },
-    3: {
-      id: 3,
+    12: {
+      id: 12,
       title: "Dev stuff",
       color: "blue",
-      lists: []
-    },
-    4: {
-      id: 4,
-      title: "Youtube channel",
-      color: "green",
-      lists: []
-    },
-    5: {
-      id: 5,
-      title: "Other",
-      color: "red",
       lists: []
     }
   },
@@ -37,13 +25,13 @@ const defaultState = {
     "3": { id: "3", title: "watch south park", color: "orange" }
   },
   lists: {
-    1: {
-      id: 1,
+    1337: {
+      id: 1337,
       title: "Todo",
       cards: ["1", "2"]
     },
-    "2": {
-      id: 2,
+    1338: {
+      id: 1338,
       title: "In Progress",
       cards: ["3"]
     }
