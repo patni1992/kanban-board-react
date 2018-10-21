@@ -22,6 +22,17 @@ const boards = (state = {}, action) => {
         [boardId]: { ...state[boardId], lists }
       }
     }
+
+    case "DELETE_LIST": {
+      const boards = {
+        ...state,
+      }
+      const board = {...boards[action.payload.boardId]}
+      const newBoard = {...board, lists: board.lists.filter(list => list != action.payload.id)}
+      
+      return {...boards, [newBoard.id]: {...newBoard}};
+    }
+
     default:
       return state;
   }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addNewCard } from "../../actions/cards";
+import {deleteList} from "../../actions/lists"
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import Card from "../Card/Card";
 import ClickOutside from "../ClickOutside/ClickOutside";
@@ -33,8 +34,13 @@ class List extends Component {
     this.setState({ newCardText: e.target.value });
   };
 
+  delete = () => {
+    const {id, cards, boardId, deleteList} = this.props;
+    deleteList({id, cards,  boardId});
+  }
+
   render() {
-    const { color, title, cards, id, index } = this.props;
+    const { color, title, cards, id, index, boardId } = this.props;
     return (
       <Draggable key={id + 1} index={index} draggableId={id + 1}>
         {(prov, { isDragging }) => (
@@ -44,7 +50,7 @@ class List extends Component {
             style={{
               ...prov.draggableProps.style
             }}>
-            <h3  {...prov.dragHandleProps} class={`list__title darken-${color}`}>{title}</h3>
+            <h3  {...prov.dragHandleProps} class={`list__title darken-${color}`}>{title}   <i onClick={this.delete} class="fa fa-trash list__delete" /></h3>
             <Droppable droppableId={`${id}`}>
               {(provided, { isDraggingOver }) => (
                      
@@ -106,9 +112,13 @@ class List extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const cards = state.lists[ownProps.id].cards.map(
-    cardId => state.cards[cardId]
-  );
+  const list = state.lists[ownProps.id]
+  let cards = [];
+  if(list) {
+    cards = list.cards.map(
+      cardId => state.cards[cardId]
+    );
+  }
 
   return {
     cards
@@ -117,5 +127,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  { addNewCard }
+  { addNewCard, deleteList }
 )(List);

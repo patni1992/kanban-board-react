@@ -18,6 +18,14 @@ const lists = (state = {}, action) => {
       };
     }
 
+    case "DELETE_LIST": {
+      const lists = {
+        ...state
+      }
+      delete lists[action.payload.id]
+      return lists
+    }
+
     case "MOVE_CARD": {
       const { source, destination } = action.payload;
       const sourceCards = state[source.id].cards.slice(0);

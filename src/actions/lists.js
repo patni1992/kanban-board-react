@@ -15,3 +15,11 @@ export function moveCard(payload) {
     payload
   };
 }
+
+export function deleteList(payload) {
+  return {
+    type: "DELETE_LIST",
+    payload
+  };
+}
+
