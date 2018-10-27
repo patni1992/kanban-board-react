@@ -1,7 +1,6 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const env = process.env.NODE_ENV
 
 const htmlWebpackPlugin = new HtmlWebPackPlugin({
   template: "src/index.html"
@@ -13,7 +12,6 @@ const miniCssExtractPlugin = new MiniCssExtractPlugin({
 });
 
 module.exports = {
-  mode: env || 'development',
   entry: "./src/index.js",
   output: {
     filename: "[name]-bundle.js",
