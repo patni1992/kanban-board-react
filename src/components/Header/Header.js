@@ -4,11 +4,11 @@ import { connect } from "react-redux";
 import "./Header.scss";
 const Header = props => {
   return (
-    <header class={`header darken-${props.color}`}>
-      <div class="header__menu">
+    <header className={`header darken-${props.color}`}>
+      <div className="header__menu">
         <Link style={{ textDecoration: "none", color: "white" }} to="/">
-          <button class="header__btn">
-            <i class="fa fa-trello header__btn-icon" />
+          <button className="header__btn">
+            <i className="fa fa-trello header__btn-icon" />
             Boards
           </button>
         </Link>

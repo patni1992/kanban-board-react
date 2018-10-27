@@ -68,8 +68,8 @@ class Board extends Component {
           {provided => (
             <div  onMouseDown={this.handleMouseDown}
             onWheel={this.handleWheel} class={`board__container ${color}`} ref={provided.innerRef}>
-              <section  class={`board__info-bar`}>
-                <h2 className="board__title">{title} </h2>
+              <section  className={`board__info-bar`}>
+                <h2 className="board__title">{title}</h2>
               </section>
               <section class={`board__lists-container  ${color}`}>
                 {this.props.lists.map((list, index) => (
@@ -90,7 +90,7 @@ class Board extends Component {
                   </ClickOutside>
                 ) : (
                     <button
-                      class={`board_add-list-btn  darken-${color}`}
+                      className={`board_add-list-btn  darken-${color}`}
                       onClick={this.toggleInputList}
                     >
                       Add a list

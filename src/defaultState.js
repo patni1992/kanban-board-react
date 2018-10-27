@@ -8,7 +8,7 @@ const defaultState = {
     },
     "11": {
       id: "11",
-      title: "test",
+      title: "Code react",
       color: "orange",
       lists: []
     },
