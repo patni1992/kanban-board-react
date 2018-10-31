@@ -1,7 +1,7 @@
 import React from "react";
-
+import "./EditCard.scss";
 const EditCard = props => (
-  <textarea  autoFocus defaultValue={props.text} style={{height: `${props.height}px`, width: "100%"}} id=""></textarea>
+  <textarea  className="edit-card" autoFocus defaultValue={props.text} style={{height: `${props.height}px`, width: "100%"}}></textarea>
 );
 
 export default EditCard;
