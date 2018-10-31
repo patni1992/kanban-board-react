@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addNewCard } from "../../actions/cards";
 import {deleteList} from "../../actions/lists"
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import Card from "../Card/Card";
+import {Droppable, Draggable } from "react-beautiful-dnd";
+import CardWrapper from "../Card/CardWrapper";
 import ClickOutside from "../ClickOutside/ClickOutside";
 import "./List.scss";
+
 
 class List extends Component {
   state = {
@@ -68,7 +69,7 @@ class List extends Component {
                                 ...provided.draggableProps.style
                               }}
                             >
-                              <Card {...card} />
+                              <CardWrapper {...card} />
                             </div>
                           )}
                         </Draggable>
