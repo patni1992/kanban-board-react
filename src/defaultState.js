@@ -2,9 +2,9 @@ const defaultState = {
   boards: {
     "10": {
       id: "10",
-      title: "study",
-      color: "red",
-      lists: ["1337", "1338"]
+      title: "React Project",
+      color: "blue",
+      lists: ["10ie", "1338"]
     },
     "11": {
       id: "11",
@@ -20,13 +20,16 @@ const defaultState = {
     }
   },
   cards: {
-    "1": { id: "1", title: "sleep", color: "red" },
+    "1": { id: "1", title: `* hello 
+    \n* hello 
+    \n* test 
+    `, color: "red" },
     "2": { id: "2", title: "# read react book", color: "blue" },
     "3": { id: "3", title: "watch south park", color: "orange" }
   },
   lists: {
-    "1337": {
-      id: "1337",
+    "10ie": {
+      id: "10ie",
       title: "Todo",
       cards: ["1", "2"]
     },

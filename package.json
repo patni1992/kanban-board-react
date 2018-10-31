@@ -5,11 +5,11 @@
   "main": "webpack.config.js",
   "dependencies": {
     "classnames": "^2.2.6",
+    "marked": "^0.5.1",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-beautiful-dnd": "^9.0.2",
     "react-dom": "^16.4.2",
-    "react-markdown": "^3.6.0",
     "react-onclickoutside": "^6.7.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",

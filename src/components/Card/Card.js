@@ -1,10 +1,11 @@
 import React from "react";
-import ReactMarkdown from "react-markdown";
+import marked from 'marked';
 import { Draggable } from "react-beautiful-dnd";
 import "./Card.scss";
 const Card = props => (
-  <div className={` card lighten-${props.color}`}>
-    <ReactMarkdown source={props.title} />
+  <div dangerouslySetInnerHTML={{__html: marked(props.title)}} className={` card lighten-${props.color}`}>
+  
+   
   </div>
 );
 
