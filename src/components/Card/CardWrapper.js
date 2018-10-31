@@ -1,21 +1,29 @@
 import React, {Component} from "react";
+import { connect } from "react-redux";
 import Card from './Card'
 import EditCard from './EditCard'
-import "./Card.scss";
+import {updateCard} from "../../actions/cards"
+import "./CardWrapper.scss";
 class CardWrapper extends Component {
     state = {
-        editing: false
+        editing: false,
+        height: null,
+        widht: null
     }
 
     handleKeyPress = (e) => {
-        if (e.key === 'Enter' && this.state.editing) {
-            console.log('update card');
+        if (e.key === 'Enter' && !e.shiftKey && this.state.editing) {
+            this.props.updateCard({...this.props, title: e.target.value})
             this.toggleEdit();
           }
     }
 
     handleClick = (e) => {
         if(e.target.tagName.toLowerCase() !== "textarea") {
+            this.setState({
+                height: e.currentTarget.offsetHeight,
+                width: e.currentTarget.offsetWidth
+            })
             this.toggleEdit();
         }    
     }
@@ -28,12 +36,16 @@ class CardWrapper extends Component {
 
     render() {
         return (
-            <div onClick={this.handleClick} onKeyPress={this.handleKeyPress}>
-                 {this.state.editing ? <EditCard /> : <Card {...this.props} />} 
+            <div class="card-wrapper" onClick={this.handleClick} onKeyPress={this.handleKeyPress}>
+                 {this.state.editing ? <EditCard text={this.props.title} height={this.state.height}/> : <Card {...this.props} />} 
             </div>
         )
     }
     
 }
-
-export default CardWrapper;
+  
+  export default connect(
+    null,
+    { updateCard }
+  )(CardWrapper);
+  

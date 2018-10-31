@@ -8,3 +8,10 @@ export function addNewCard(payload) {
     payload
   };
 }
+
+export function updateCard(payload) {
+  return {
+    type: "UPDATE_CARD",
+    payload
+  };
+}

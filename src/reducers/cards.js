@@ -3,6 +3,9 @@ const cards = (state = {}, action) => {
     case "ADD_NEW_CARD": {
       return { [action.payload.id]: action.payload, ...state };
     }
+    case "UPDATE_CARD": {
+      return { ...state, [action.payload.id]: action.payload };
+    }
     case "DELETE_LIST": {
       const cards  = {...state};
       

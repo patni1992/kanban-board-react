@@ -1,7 +1,7 @@
 import React from "react";
 
 const EditCard = props => (
-  <textarea name="" id="" cols="30" rows="10"></textarea>
+  <textarea defaultValue={props.text} style={{height: `${props.height}px`, width: "100%"}} id=""></textarea>
 );
 
 export default EditCard;
