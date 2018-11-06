@@ -9,6 +9,10 @@
   word-wrap: break-word;
   cursor: pointer;
 
+  ul, ol {
+    padding-left: 1rem; 
+  }
+
   img {
     width: 100%;
   }
