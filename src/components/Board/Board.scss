@@ -14,8 +14,7 @@
 
 .board__container {
   height: calc(100% - #{$header-and-board-title-height});
-  
-  
+  overflow: auto;
 }
 
 .board__title {
@@ -30,8 +29,7 @@
 .board__lists-container {
   display: flex;
   align-items: start;
-  height: 100%
-
+  height: 100%;
 }
 
 .board_add-list-btn {

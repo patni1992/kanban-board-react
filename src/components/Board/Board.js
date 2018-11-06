@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { connect } from "react-redux";
 import ClickOutside from "../ClickOutside/ClickOutside";
-import { addNewList, moveCard} from "../../actions/lists";
-import {moveList } from "../../actions/boards"
+import { addNewList, moveCard } from "../../actions/lists";
+import { moveList } from "../../actions/boards"
 import List from "../List/List";
 import "./Board.scss";
 
@@ -32,26 +32,26 @@ class Board extends Component {
   };
 
   handleDragEnd = result => {
-    const { source, destination , type} = result;
-    
+    const { source, destination, type } = result;
+
     if (!destination) {
       return;
     }
-    
-    if(type === "COLUMN") {
+
+    if (type === "COLUMN") {
       this.props.moveList({
         sourceIndex: source.index,
         destinationIndex: destination.index,
         boardId: this.props.id
       });
-     
+
     } else {
       this.props.moveCard({
         source: { id: source.droppableId, index: source.index },
         destination: { id: destination.droppableId, index: destination.index }
       });
     }
-   
+
   };
 
 
@@ -66,40 +66,45 @@ class Board extends Component {
           direction="horizontal"
         >
           {provided => (
-            <div  onMouseDown={this.handleMouseDown}
-            onWheel={this.handleWheel} class={`board__container ${color}`} ref={provided.innerRef}>
-              <section  className={`board__info-bar`}>
+            <div>
+              <section className={`board__info-bar ${color}`}>
                 <h2 className="board__title">{title}</h2>
               </section>
-              <section class={`board__lists-container  ${color}`}>
-                {this.props.lists.map((list, index) => (
-                  <List boardId={this.props.id} color={color} index={index} {...list} />
-                ))}
-                {this.state.inputList ? (
-                  <ClickOutside   handleClickOutside={this.toggleInputList}>
-                    <form
-                      className="board__add-list-form "
-                      onSubmit={this.onSubmitHandler}
-                    >
-                      <input
-                        autoFocus
-                        value={this.state.newList}
-                        onChange={this.onChangeHandler}
-                      />
-                    </form>
-                  </ClickOutside>
-                ) : (
-                    <button
-                      className={`board_add-list-btn  darken-${color}`}
-                      onClick={this.toggleInputList}
-                    >
-                      Add a list
+              <div onMouseDown={this.handleMouseDown}
+                onWheel={this.handleWheel} class={`board__container ${color}`} ref={provided.innerRef}>
+                <div>
+                </div>
+                <section class={`board__lists-container  ${color}`}>
+                  {this.props.lists.map((list, index) => (
+                    <List boardId={this.props.id} color={color} index={index} {...list} />
+                  ))}
+                  {this.state.inputList ? (
+                    <ClickOutside handleClickOutside={this.toggleInputList}>
+                      <form
+                        className="board__add-list-form "
+                        onSubmit={this.onSubmitHandler}
+                      >
+                        <input
+                          autoFocus
+                          value={this.state.newList}
+                          onChange={this.onChangeHandler}
+                        />
+                      </form>
+                    </ClickOutside>
+                  ) : (
+                      <button
+                        className={`board_add-list-btn  darken-${color}`}
+                        onClick={this.toggleInputList}
+                      >
+                        Add a list
             </button>
-                  )}
-                {provided.placeholder}
-              </section>
+                    )}
+                  {provided.placeholder}
+                </section>
 
+              </div>
             </div>
+
 
           )}
         </Droppable>
