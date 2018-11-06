@@ -66,14 +66,12 @@ class Board extends Component {
           direction="horizontal"
         >
           {provided => (
-            <div>
+            <div className={`wrapper ${color}`}>
               <section className={`board__info-bar ${color}`}>
                 <h2 className="board__title">{title}</h2>
               </section>
               <div onMouseDown={this.handleMouseDown}
                 onWheel={this.handleWheel} class={`board__container ${color}`} ref={provided.innerRef}>
-                <div>
-                </div>
                 <section class={`board__lists-container  ${color}`}>
                   {this.props.lists.map((list, index) => (
                     <List boardId={this.props.id} color={color} index={index} {...list} />

@@ -12,8 +12,13 @@
 }
 
 
+.wrapper {
+  height: calc(100% - #{$header-height});
+}
+
+
 .board__container {
-  height: calc(100% - #{$header-and-board-title-height});
+  height: 100%;
   overflow: auto;
 }
 
