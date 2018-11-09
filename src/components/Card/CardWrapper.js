@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
 import Card from './Card'
+import ClickOutside from "../ClickOutside/ClickOutside";
 import EditCard from './EditCard'
 import {updateCard} from "../../actions/cards"
 import "./CardWrapper.scss";
@@ -37,7 +38,7 @@ class CardWrapper extends Component {
     render() {
         return (
             <div class="card-wrapper" onClick={this.handleClick} onKeyPress={this.handleKeyPress}>
-                 {this.state.editing ? <EditCard text={this.props.title} height={this.state.height}/> : <Card {...this.props} />} 
+                 {this.state.editing ? <ClickOutside  handleClickOutside={this.handleClick}> <EditCard text={this.props.title} height={this.state.height}/> </ClickOutside> : <Card {...this.props} />} 
             </div>
         )
     }
