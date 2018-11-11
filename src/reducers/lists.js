@@ -1,11 +1,10 @@
 const lists = (state = {}, action) => {
   switch (action.type) {
     case "ADD_NEW_CARD": {
-      const { listId, id } = action.payload;
-      return {
-        ...state,
-        [listId]: { ...state[listId], cards: [...state[listId].cards, id] }
-      };
+      return addNewCard(state, action.payload.listId, action.payload.id)
+    }
+    case "DELETE_CARD": {
+      return deleteCard(state, action.payload.listId, action.payload.id);
     }
     case "ADD_NEW_LIST": {
       return {
@@ -53,5 +52,16 @@ const lists = (state = {}, action) => {
       return state;
   }
 };
+
+function deleteCard(state, listId, cardId) {
+  return {...state,[listId]: {...state[listId], cards: state[listId].cards.filter(card => card !== cardId)}}
+}
+
+function addNewCard(state, listId, cardId) {
+  return {
+    ...state,
+    [listId]: { ...state[listId], cards: [...state[listId].cards, cardId] }
+  }
+}
 
 export default lists;

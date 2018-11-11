@@ -69,7 +69,7 @@ class List extends Component {
                                 ...provided.draggableProps.style
                               }}
                             >
-                              <CardWrapper {...card} />
+                              <CardWrapper listId={this.props.id} {...card} />
                             </div>
                           )}
                         </Draggable>

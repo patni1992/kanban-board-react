@@ -6,9 +6,14 @@ const cards = (state = {}, action) => {
     case "UPDATE_CARD": {
       return { ...state, [action.payload.id]: action.payload };
     }
+    case "DELETE_CARD": {
+      const cards = {...state}
+      delete cards[action.payload.id]
+      return cards
+    }
     case "DELETE_LIST": {
-      const cards  = {...state};
-      
+      const cards = { ...state };
+
       for (const card of action.payload.cards) {
         delete cards[card.id];
       }

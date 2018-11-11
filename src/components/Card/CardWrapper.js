@@ -5,7 +5,7 @@ import CardOptions from "./CardOptions";
 import ClickOutside from "../ClickOutside/ClickOutside";
 import ColorPicker from "../ColorPicker/ColorPicker";
 import EditCard from './EditCard'
-import {updateCard} from "../../actions/cards"
+import {updateCard, deleteCard} from "../../actions/cards"
 import "./CardWrapper.scss";
 class CardWrapper extends Component {
     state = {
@@ -34,6 +34,8 @@ class CardWrapper extends Component {
             }} default={this.props.color}
             colors={["blue", "orange", "green", "red"]} />
     },
+    {
+        name: "delete", icon: "", onClick: () => this.props.deleteCard({...this.props, id: this.props.id})}
     ]
 
     handleKeyPress = (e) => {
@@ -42,8 +44,6 @@ class CardWrapper extends Component {
             this.toggleEdit();
           }
     }
-
-
 
     disableEdit = () => {
         if(this.state.editing) {
@@ -71,7 +71,7 @@ class CardWrapper extends Component {
             editing: !prevState.editing
           }));
     }
-    
+
     render() {
         return (
             <ClickOutside handleClickOutside={this.disableEdit}>
@@ -88,6 +88,6 @@ class CardWrapper extends Component {
   
   export default connect(
     null,
-    { updateCard }
+    { updateCard, deleteCard }
   )(CardWrapper);
   

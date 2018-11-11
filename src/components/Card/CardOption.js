@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import "./CardOption.scss";
 class CardOption extends Component {
     onClickHandler = () => {
+        if(this.props.option.onClick) {
+            this.props.option.onClick();
+            return;
+        }
         this.setState(prevState => ({
             showChildren: !prevState.showChildren
           }));

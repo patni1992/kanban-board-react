@@ -15,3 +15,11 @@ export function updateCard(payload) {
     payload
   };
 }
+
+export function deleteCard(payload) {
+  return {
+    type: "DELETE_CARD",
+    payload
+  };
+}
+
