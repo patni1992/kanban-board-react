@@ -1,0 +1,13 @@
+.card-option {
+    display: flex;
+    padding: 0.7rem;
+    margin: 0.6rem;
+    
+    & button {
+        background: hsla(0,0%,100%,.8);
+        color: #000;
+        padding: 0.8rem;
+        margin: 0 1rem; 
+        cursor: pointer;
+    }
+}
