@@ -76,7 +76,7 @@ class CardWrapper extends Component {
         return (
             <ClickOutside handleClickOutside={this.disableEdit}>
                 <div class="card-wrapper" onClick={this.activateEdit} onKeyPress={this.handleKeyPress}>
-                    {this.state.editing ? <div> <EditCard text={this.props.title} height={this.state.height} /> 
+                    {this.state.editing ? <div className="test">  <EditCard text={this.props.title}  width={this.state.width} height={this.state.height} /> 
                     <CardOptions {...this.props} options={this.CardOptions} /> </div> 
                     : <Card {...this.props} />}
                 </div>

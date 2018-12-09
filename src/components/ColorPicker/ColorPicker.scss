@@ -1,7 +1,7 @@
 .color-picker {
   background-color: white;
   display: inline-flex;
-  flex-wrap: wrap;
+  border: 1px solid #bbb;
 
   &__color {
     position: relative;
