@@ -16,7 +16,7 @@ class CardOption extends Component {
     render() {
         const { option, children } = this.props
         return (<div className="card-option">
-            <button onClick={this.onClickHandler} >{option.name}</button>
+            <button onClick={this.onClickHandler}> <i className={option.icon}></i> {option.name}</button>
             <div className={`${!this.state.showChildren && "visibility-hidden"}`}>
                 {children}
             </div>

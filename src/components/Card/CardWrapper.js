@@ -26,7 +26,7 @@ class CardWrapper extends Component {
         }
 
     CardOptions = [{
-        name: "color", icon: "", children: <ColorPicker
+        name: "color", icon: "fa fa-paint-brush", children: <ColorPicker
             clickHandler={color => {
                 this.props.updateCard({
                     ...this.props, color
@@ -35,7 +35,7 @@ class CardWrapper extends Component {
             colors={["blue", "orange", "green", "red"]} />
     },
     {
-        name: "delete", icon: "", onClick: () => this.props.deleteCard({...this.props, id: this.props.id})}
+        name: "delete", icon: "fa fa-trash", onClick: () => this.props.deleteCard({...this.props, id: this.props.id})}
     ]
 
     handleKeyPress = (e) => {

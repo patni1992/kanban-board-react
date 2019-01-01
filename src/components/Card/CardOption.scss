@@ -1,12 +1,15 @@
 .card-option {
     display: flex;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.4rem;
    
     & button {
-        min-width: 5rem;
-        background: hsla(0,0%,100%,.8);
+        min-width: 5.8rem;
+       background:  rgba(255, 255, 255, 0.8);
+       border-radius: 0.4rem;
         color: #000;
         padding: 0.4rem;
         cursor: pointer;
+        font-weight: bold;
+        text-transform: capitalize;
     }
 }
